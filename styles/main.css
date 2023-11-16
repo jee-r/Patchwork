@@ -1,0 +1,67 @@
+form fieldset {
+    padding-bottom: 1em;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#resultcontainer {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2em;
+    padding-right: 2em;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    border-radius: 5px;
+    /* border: 1px; */
+    background-color: var(--card-background-color);
+    /* border-color: rgb(0, 211, 35); */
+    /* border-style: solid; */
+    width: 100%;
+}
+#resultcontainer img {
+    padding: 5px;
+    margin-top: var(--block-spacing-vertical);
+    margin-bottom: var(--block-spacing-vertical);
+}
+.field-title {
+    padding-top: var(--spacing);
+    padding-bottom: var(--spacing);
+    margin-top: var(--spacing);
+    text-decoration: underline;
+    width: 100%;
+    /* text-decoration-color: beige; */
+}
+.img-link {
+    /* margin-top: 2em; */
+    display: flex;
+    width: 100%;
+    margin-bottom: var(--spacing);;
+    margin-top: var(--spacing);;
+}
+
+.img-link > a {
+    padding: var(--spacing);
+    width: 100%;
+    border-radius: 5px;
+    border: 1px;
+    border-style: solid;
+    border-color: var(--primary-hover);
+    background-color: var(--code-background-color);
+    font-family: monospace;
+    white-space: nowrap;
+    overflow-x: auto;
+
+}
+
+.copy-btn {
+
+}
+.patchwork {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
