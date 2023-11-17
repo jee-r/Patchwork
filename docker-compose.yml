@@ -14,7 +14,8 @@ services:
       - TZ=Europe/Paris
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - app:/app:ro
+      - patchworks:/app/images
+      - ./.env:/app/.env:ro
       # mount bind for dev 
       # - ./app:/app
       # - ./docker/php.ini:/usr/local/etc/php/conf.d/php.ini
@@ -24,12 +25,16 @@ services:
     image: nginxinc/nginx-unprivileged:alpine
     container_name: nginx
     restart: unless-stopped
+    depends_on:
+      - php
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
+      - patchworks:/app/images
       # mount bind for dev 
       # - ./app:/app
-      - app:/app:ro
+    volumes_from:
+      - "php"
     environment:
       - TZ=Europe/Paris
     ports:
@@ -37,4 +42,4 @@ services:
     working_dir: "/app"
 
 volumes:
-  app:
+  patchworks:

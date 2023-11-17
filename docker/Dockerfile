@@ -8,7 +8,11 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 RUN chmod +x /usr/local/bin/install-php-extensions && \
     install-php-extensions gd
 
-COPY . /app
-COPY ./docker/php.ini:/usr/local/etc/php/conf.d/php.ini
+COPY --chown=1000:1000 . /app
+COPY --chown=1000:1000 ./docker/php.ini /usr/local/etc/php/conf.d/php.ini
+VOLUME app
 
-VOLUME ["/app"]
+WORKDIR /app
+USER 1000:1000
+
+RUN composer install
