@@ -7,8 +7,8 @@
     <meta charset="utf-8" />
     <meta name="description" content="A tool that generates a patchwork, an image, based on the covers of your Last.fm top albums. It's simple, free, and it works." />
     <meta name="keywords" content="lastfm top albums generator, last.fm top albums generator, lastfm top albums, last.fm top albums, lastfm, last.fm, top albums" />
-    <link href="styles/main.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="/vendor/picocss/pico/css/pico.min.css">
+    <link href="/styles/main.css" rel="stylesheet" type="text/css" />
+    <link href="/styles/pico.min.css" rel="stylesheet" type="text/css" />
     <script src="/scripts/main.js"></script>
 </head>
 <body>
@@ -116,6 +116,7 @@
             </div>
         </article>
     </main>
+<footer>Coucou</footer>
 </body>
 
 </html>

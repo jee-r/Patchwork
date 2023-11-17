@@ -1,3 +1,13 @@
-.env
-.vendor/
+
 images/*.jpg
+
+# Ignore composer files
+/vendor/
+
+# Ignore environment-specific files
+.env
+.env.*
+
+# Ignore log files
+/log/
+*.log

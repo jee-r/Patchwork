@@ -1,10 +1,10 @@
 <?php
 // import functions
-require_once 'functions.php';
+require_once '../src/functions.php';
 
 // load Lastfm APIKEY from .env
-require_once realpath(__DIR__ . "/vendor/autoload.php");
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+require_once realpath(__DIR__ . "/../vendor/autoload.php");
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/..");
 $dotenv->load();
 
 $apiKey = $_ENV['LASTFM_API_KEY'];
