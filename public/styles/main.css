@@ -1,3 +1,27 @@
+:root {
+
+  --nav-background-color:  #d81b60;
+  --footer-background-color:  #d81b60;
+}
+
+nav {
+    /* background-color: var(--nav-background-color);  */
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+footer {
+    /* background-color: var(--footer-background-color); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lov3 {
+    color: #d81b60;
+    font-weight: bold;
+}
 form fieldset {
     padding-bottom: 1em;
 }
@@ -57,9 +81,6 @@ form fieldset {
 
 }
 
-.copy-btn {
-
-}
 .patchwork {
     display: flex;
     justify-content: center;
