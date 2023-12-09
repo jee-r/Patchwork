@@ -97,6 +97,9 @@
         </article>
 
         <article class="hidden" id="resultcontainer">
+            <div class="patchwork">
+                <img src="" id="patchworkImg" width="" height="" alt="Patchwork">
+            </div>
             <div class="">
                 <div class="field-title">Dynamyc Image link :</div>
                 <div class="img-link">
@@ -110,10 +113,6 @@
                     <a id="patchworkStaticLink" href="" target="_blank"></a>
                 </div>
                 <div role="button" class="outline contrast" onclick="copyToClipboard(event, 'patchworkStaticLink')">Copy</div>
-            </div>
-
-            <div class="patchwork">
-                <img src="" id="patchworkImg" width="" height="" alt="Patchwork">
             </div>
         </article>
     </main>
