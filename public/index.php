@@ -130,10 +130,7 @@
         </article>
     </main>
     <footer>
-        <div>made with <span class="lov3">
-                <3< /span>
-        </div>
-        <div>by <a href="https://artz.dev" target="_blank" rel="noopener noreferrer">Jee</a></div>
+        <div>made with <span class="lov3">&lt;3</span> by <a href="https://artz.dev" target="_blank" rel="noopener noreferrer">Jee</a></div>
         <a class="outline contrast" href="https://github.com/jee-r/Patchwork" role="">
             Fork Me
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
