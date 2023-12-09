@@ -108,6 +108,7 @@
                 <h2 id="patchworkTitle"></h2>
                 <div class="patchwork">
                     <img src="" id="patchworkImg" width="" height="" alt="Patchwork">
+                    <a id="downloadbtn" role="button" class="primary" href="" download>Download</a>
                 </div>
                 <div class="">
                     <div class="field-title">Dynamyc Image link :</div>

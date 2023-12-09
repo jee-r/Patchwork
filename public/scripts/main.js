@@ -4,6 +4,7 @@ function submitForm(event) {
     const usernameField = document.getElementById('username')
     const submitbtn = document.getElementById('submitbtn')
     const messagebox = document.getElementById('messagebox')
+    const downloadbtn = document.getElementById('downloadbtn')
     const patchworkTitle = document.getElementById('patchworkTitle')
     const patchworkStaticLink = document.getElementById('patchworkStaticLink')
     const patchworkDynLink = document.getElementById('patchworkDynLink')
@@ -52,6 +53,7 @@ function submitForm(event) {
         // Update the result container with the response
         patchworkTitle.innerHTML = patchworkTitleText
         patchworkStaticLink.innerHTML = patchworkStaticUrl;
+        downloadbtn.setAttribute("href", patchworkStaticUrl );
         patchworkStaticLink.setAttribute("href", patchworkStaticUrl );
         patchworkDynLink.innerHTML = patchworkDynamicUrl;
         patchworkDynLink.setAttribute("href", patchworkDynamicUrl);
