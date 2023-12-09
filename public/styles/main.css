@@ -1,17 +1,28 @@
-:root {
-
-  --nav-background-color:  #d81b60;
-  --footer-background-color:  #d81b60;
+[data-theme=light], :root:not([data-theme=dark]) {
+  --nav-background-color:  rgba(0, 0, 0, 0.1);
+  --footer-background-color: rgba(0, 0, 0, 0,1);
+  --primary: rgba(217, 28, 97, 1);
+  --primary-hover: rgb(226, 59, 120);
+  --form-element-focus-color: rgba(226, 59, 120, 0.2);
 }
 
+@media only screen and (prefers-color-scheme: dark) {
+:root:not([data-theme]) {
+  --primary: rgba(217, 28, 97, 1);
+  --primary-hover: rgb(226, 59, 120);
+  --nav-background-color:  rgba(0, 0, 0, 0.2);
+  --footer-background-color: rgba(0, 0, 0, 0.2);
+  --form-element-focus-color: rgba(226, 59, 120, 0.2);
+}}
+
 nav {
-    /* background-color: var(--nav-background-color);  */
+    background-color: var(--nav-background-color); 
     padding-left: 2em;
     padding-right: 2em;
 }
 
 footer {
-    /* background-color: var(--footer-background-color); */
+    background-color: var(--footer-background-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,6 +33,12 @@ footer {
     color: #d81b60;
     font-weight: bold;
 }
+
+.logo {
+    height: 4rem;
+    width: 4rem;
+}
+
 form fieldset {
     padding-bottom: 1em;
 }

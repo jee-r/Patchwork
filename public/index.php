@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,11 @@
     <meta charset="utf-8" />
     <meta name="description" content="A tool that generates a patchwork, an image, based on the covers of your Last.fm top albums. It's simple, free, and it works." />
     <meta name="keywords" content="lastfm top albums generator, last.fm top albums generator, lastfm top albums, last.fm top albums, lastfm, last.fm, top albums" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
     <link href="/styles/pico.min.css" rel="stylesheet" type="text/css" />
     <link href="/styles/main.css" rel="stylesheet" type="text/css" />
     <script src="/scripts/main.js"></script>
@@ -15,17 +21,10 @@
 <body>
     <nav>
         <ul>
-            <li><strong>Top Album <span class="lov3">Patchwork</span></strong></li>
-        </ul>
-        <ul>
-            <li>
-                <a class="contrast" href="https://github.com/jee-r/Patchwork" role="button">
-                    Fork Me
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M2.6 10.59L8.38 4.8l1.69 1.7c-.24.85.15 1.78.93 2.23v5.54c-.6.34-1 .99-1 1.73a2 2 0 0 0 2 2a2 2 0 0 0 2-2c0-.74-.4-1.39-1-1.73V9.41l2.07 2.09c-.07.15-.07.32-.07.5a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2c-.18 0-.35 0-.5.07L13.93 7.5a1.98 1.98 0 0 0-1.15-2.34c-.43-.16-.88-.2-1.28-.09L9.8 3.38l.79-.78c.78-.79 2.04-.79 2.82 0l7.99 7.99c.79.78.79 2.04 0 2.82l-7.99 7.99c-.78.79-2.04.79-2.82 0L2.6 13.41c-.79-.78-.79-2.04 0-2.82Z" />
-                    </svg>
-                </a>
+            <li class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><g id="SvgjsG1004" transform="translate(.252 .236)"><rect id="SvgjsRect1003" width="8.019" height="8.035" x="0" y="0" rx="0" ry=".772" style="display:inline;fill:#e41c61;fill-opacity:1;stroke-width:.75"/><rect id="SvgjsRect1002" width="8.019" height="8.035" x="0" y="8.635" rx="0" ry=".772" style="display:inline;fill:#191919;fill-opacity:1;stroke-width:.75"/><rect id="SvgjsRect1001" width="8.019" height="8.035" x="8.619" y="0" rx="0" ry=".772" style="display:inline;fill:#191919;fill-opacity:1;stroke-width:.75"/><rect id="SvgjsRect1000" width="8.019" height="8.035" x="8.619" y="8.635" rx="0" ry=".772" style="display:inline;fill:#e41c61;stroke-width:.75"/></g></svg>
             </li>
+            <li><strong>Top Album <span class="lov3">Patchwork</span></strong></li>
         </ul>
     </nav>
     <main class="container">
@@ -118,9 +117,17 @@
         </article>
     </main>
     <footer>
-        <div>made with <span class="lov3"><3</span></div>
+        <div>made with <span class="lov3">
+                <3</span>
+        </div>
         <div>by <a href="https://artz.dev" target="_blank" rel="noopener noreferrer">Jee</a></div>
-</footer>
+                <a class="outline contrast" href="https://github.com/jee-r/Patchwork" role="">
+                    Fork Me
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M2.6 10.59L8.38 4.8l1.69 1.7c-.24.85.15 1.78.93 2.23v5.54c-.6.34-1 .99-1 1.73a2 2 0 0 0 2 2a2 2 0 0 0 2-2c0-.74-.4-1.39-1-1.73V9.41l2.07 2.09c-.07.15-.07.32-.07.5a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2c-.18 0-.35 0-.5.07L13.93 7.5a1.98 1.98 0 0 0-1.15-2.34c-.43-.16-.88-.2-1.28-.09L9.8 3.38l.79-.78c.78-.79 2.04-.79 2.82 0l7.99 7.99c.79.78.79 2.04 0 2.82l-7.99 7.99c-.78.79-2.04.79-2.82 0L2.6 13.41c-.79-.78-.79-2.04 0-2.82Z" />
+                    </svg>
+                </a>
+    </footer>
 </body>
 
 </html>
