@@ -4,14 +4,16 @@ function submitForm(event) {
     const usernameField = document.getElementById('username')
     const submitbtn = document.getElementById('submitbtn')
     const messagebox = document.getElementById('messagebox')
+    const patchworkTitle = document.getElementById('patchworkTitle')
     const patchworkStaticLink = document.getElementById('patchworkStaticLink')
     const patchworkDynLink = document.getElementById('patchworkDynLink')
     const patchworkImg = document.getElementById('patchworkImg')
+
     submitbtn.setAttribute("aria-busy", "true")
     submitbtn.innerHTML = "Generating Patchwork, please wait…"
     resultContainer.classList.add('hidden')
     messagebox.classList.add('hidden')
-    // resultContainer.innerHTML = '<div aria-busy="true">Generating Patchwork, please wait…</div>'
+    
     // Fetch the form data
     const formData = new FormData(event.target);
     const patchworkDynamicParams = new URLSearchParams(formData).toString(); 
@@ -33,6 +35,9 @@ function submitForm(event) {
             messagebox.classList.remove('hidden')
             return
         }
+        
+        const patchworkTitleText = formData.get('username') + "'s " + formData.get('period') + " Top-Albums Patchwork" 
+        console.log('patchworkTitleText', patchworkTitleText)
 
         submitbtn.removeAttribute("aria-busy")
         submitbtn.innerHTML = "Generate again"
@@ -45,6 +50,7 @@ function submitForm(event) {
         const patchworkStaticUrl = baseUrl + "/" + result.imagePath;
         
         // Update the result container with the response
+        patchworkTitle.innerHTML = patchworkTitleText
         patchworkStaticLink.innerHTML = patchworkStaticUrl;
         patchworkStaticLink.setAttribute("href", patchworkStaticUrl );
         patchworkDynLink.innerHTML = patchworkDynamicUrl;

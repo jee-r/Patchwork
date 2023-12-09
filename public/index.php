@@ -97,6 +97,7 @@
         </article>
 
         <article class="hidden" id="resultcontainer">
+            <h2 id="patchworkTitle"></h2>
             <div class="patchwork">
                 <img src="" id="patchworkImg" width="" height="" alt="Patchwork">
             </div>
