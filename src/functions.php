@@ -1,7 +1,8 @@
 <?php
 
 // Debug purpose print $data to browser console
-function console_log($data) {
+function console_log($data)
+{
     $output = $data;
     if (is_array($output))
         $output = implode(',', $output);
@@ -12,42 +13,72 @@ function console_log($data) {
 // check if LastFM user exist
 function checkUserExist($lastfmUser, $apiKey)
 {
-    $query = "https://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=$lastfmUser&api_key=$apiKey&format=json";
+
+    $params = http_build_query(array(
+        'method' => 'user.getinfo',
+        'user' => $lastfmUser, // assume $lastfmUser is defined
+        'api_key' => $apiKey, // assume $apiKey is defined
+        'format' => 'json'
+    ));
+
+    $query = "https://ws.audioscrobbler.com/2.0/?" . $params;
+
+    // $query = html_entity_decode("https://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=$lastfmUser&api_key=$apiKey&format=json");
+
     try {
-        $lastfmUserInfo = file_get_contents($query);
-        
+        $lastfmUserInfo = @file_get_contents($query);
+
         // Check for errors
         if ($lastfmUserInfo === false) {
             throw new Exception("Unable to fetch Last.fm user info.");
+        } else {
+            $lastfmUserInfoJson = json_decode($lastfmUserInfo, true);
         }
-        
-    $lastfmUserInfoJson = json_decode($lastfmUserInfo, true);
 
-    if (isset($lastfmUserInfoJson['user']['name'])) {
-        return true;
-    }
-
+        if (!isset($lastfmUserInfoJson['user']['name'])) {
+            throw new Exception("Unable to fetch Last.fm user info.");
+        } else {
+            return true;
+        }
     } catch (Exception $e) {
-        // Handle the exception (log, display an error message, etc.)
-        // For demonstration purposes, we'll return a string with the error message
-        return $e->getMessage();
-        // return false;
+        // Log the error message
+        error_log($e->getMessage());
+        // Return a generic error message
+        return "An error occurred while fetching user info.";
     }
 }
 
-// Fatch Top Albums
-function fetchtopalbums($lastfmuser, $apikey, $period, $limit) {
-    
-    // create the url 
-    // https://www.last.fm/api/show/user.gettopalbums
-    $method = "user.gettopalbums";
-    $apiurl = "https://ws.audioscrobbler.com/2.0/";
+// Fetch Top Albums
+function fetchtopalbums($lastfmUser, $apiKey, $period, $limit)
+{
 
-    $query = "$apiurl?method=$method&user=$lastfmuser&period=$period&limit=$limit&api_key=$apikey&format=json";
+    $params = http_build_query(array(
+        'method' => 'user.gettopalbums',
+        'user' => $lastfmUser,
+        'api_key' => $apiKey,
+        'period' => $period,
+        'limit' => $limit,
+        'format' => 'json'
+    ));
 
-    $lastfmdata = file_get_contents($query);
-    $lastfmdatajson = json_decode($lastfmdata, true);
-    $topalbums = $lastfmdatajson['topalbums']['album'];
+    $query = "https://ws.audioscrobbler.com/2.0/?" . $params;
+
+    try {
+
+        $lastfmdata = @file_get_contents($query);
+
+        if ($lastfmdata === false) {
+            throw new Exception("Unable to fetch Last.fm user Top Albums.");
+        } else {
+            $lastfmdatajson = json_decode($lastfmdata, true);
+            $topalbums = $lastfmdatajson['topalbums']['album'];
+        }
+    } catch (Exception $e) {
+        // Log the error message
+        error_log($e->getMessage());
+        // Return a generic error message
+        return "An error occurred while fetching user top album.";
+    }
 
     return $topalbums;
 }
@@ -125,6 +156,7 @@ function createPatchwork($imagesSideSize, $patchworkHeight, $patchworkWidth, $no
 
 function createImageJsonData($fileName, $PatchworkWidth, $PatchworkHeight)
 {
+
     $response = [
         'imagePath' => $fileName,
         'width' => $PatchworkWidth,
@@ -134,4 +166,15 @@ function createImageJsonData($fileName, $PatchworkWidth, $PatchworkHeight)
     // header('Content-Type: application/json');
     return json_encode($response);
 }
-?>
+
+function returnJson($jsonData)
+{
+    header('Content-Type: application/json');
+    echo json_encode($jsonData);
+}
+
+function returnImage($patchwork)
+{
+    header("Content-type: image/jpg");
+    imagejpeg($patchwork);
+}
