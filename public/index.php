@@ -91,8 +91,9 @@
                         No border
                     </label>
                 </fieldset>
-                <button id="submitbtn" type="submit">Generate</button>
+                <button id="submitbtn" aria-invalid="true" type="submit">Generate</button>
             </form>
+            <input id="messagebox" class="hidden" type="text" readonly>
         </article>
 
         <article class="hidden" id="resultcontainer">

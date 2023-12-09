@@ -3,12 +3,14 @@ function submitForm(event) {
     const resultContainer = document.getElementById('resultcontainer')
     const usernameField = document.getElementById('username')
     const submitbtn = document.getElementById('submitbtn')
+    const messagebox = document.getElementById('messagebox')
     const patchworkStaticLink = document.getElementById('patchworkStaticLink')
     const patchworkDynLink = document.getElementById('patchworkDynLink')
     const patchworkImg = document.getElementById('patchworkImg')
     submitbtn.setAttribute("aria-busy", "true")
     submitbtn.innerHTML = "Generating Patchwork, please wait…"
     resultContainer.classList.add('hidden')
+    messagebox.classList.add('hidden')
     // resultContainer.innerHTML = '<div aria-busy="true">Generating Patchwork, please wait…</div>'
     // Fetch the form data
     const formData = new FormData(event.target);
@@ -25,12 +27,18 @@ function submitForm(event) {
        
         if (result.error) {
             submitbtn.removeAttribute("aria-busy")
-            submitbtn.innerHTML = result.error  
+            submitbtn.innerHTML = "Try again"  
+            messagebox.setAttribute("value", result.error );  
+            messagebox.setAttribute("aria-invalid", true); 
+            messagebox.classList.remove('hidden')
             return
         }
 
         submitbtn.removeAttribute("aria-busy")
-        submitbtn.innerHTML = "Patchwork Generated !"
+        submitbtn.innerHTML = "Generate again"
+        messagebox.setAttribute("value", "Patchwork Generated !" );  
+        messagebox.setAttribute("aria-invalid", false); 
+        messagebox.classList.remove('hidden')
         
         const baseUrl = location.protocol.concat("//").concat(window.location.host);
         const patchworkDynamicUrl = baseUrl + "/patchwork.php?" + patchworkDynamicParams
