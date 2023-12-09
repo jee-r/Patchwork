@@ -91,8 +91,9 @@ function createAlbumsCoverArray($topAlbums)
         // check if extralarge image exist 
         $extralarge_image_link = isset($topAlbum['image'][3]['#text']) && !empty($topAlbum['image'][3]['#text'])
             ? parse_url($topAlbum['image'][3]['#text'])
-            : null;
+            : false;
 
+        // echo $extralarge_image_link;
         if ($extralarge_image_link) {
             $image_filename = pathinfo($extralarge_image_link['path'], PATHINFO_BASENAME);
             $original_image_link = "https://" . $extralarge_image_link['host'] . "/i/u/" . $image_filename;
@@ -147,7 +148,12 @@ function createPatchwork($imagesSideSize, $patchworkHeight, $patchworkWidth, $no
     // now we "parse" our images in the patchwork, while resizing them :]
     for ($i = 0; $i < $rows; $i++) {
         for ($j = 0; $j < $cols; $j++) {
-            imagecopyresampled($patchwork, $covers[$cols * $i + $j], $j * $imagesSideSize + $j, $i * $imagesSideSize + $i, 0, 0, $imagesSideSize + intval($noborder), $imagesSideSize + intval($noborder), imagesx($covers[$cols * $i + $j]), imagesy($covers[$cols * $i + $j]));
+            try {
+                @imagecopyresampled($patchwork, $covers[$cols * $i + $j], $j * $imagesSideSize + $j, $i * $imagesSideSize + $i, 0, 0, $imagesSideSize + intval($noborder), $imagesSideSize + intval($noborder), imagesx($covers[$cols * $i + $j]), imagesy($covers[$cols * $i + $j]));
+            } catch (\Throwable $th) {
+                error_log($th->getMessage());
+                return false;
+            }
         }
     }
 
@@ -163,7 +169,6 @@ function createImageJsonData($fileName, $PatchworkWidth, $PatchworkHeight)
         'height' => $PatchworkHeight,
     ];
 
-    // header('Content-Type: application/json');
     return json_encode($response);
 }
 

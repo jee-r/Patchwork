@@ -22,9 +22,10 @@ $noborder   = (bool)(isset($_GET["noborder"]) && $_GET["noborder"]);
 // return json data or image file
 $json = (bool)(isset($_GET["json"]) && $_GET["json"]);
 
-// Get 5 more albums incase there isn't an available
-// image for one of the requested albums #lazyhackftw
-$limit      = ($cols * $rows) + 5;
+// TODO implement a method which verify number of available cover
+// and increase the limit incase there is not enough available
+// For the moment we get 1/3 more albums than required 
+$limit = ceil(($cols * $rows) + ( ($cols * $rows) / 3 ));
 
 // Fallback if imagesSize is not set
 (isset($imagesSize)) ? $imagesSideSize = $imagesSize : $imagesSideSize = 99;
@@ -41,13 +42,13 @@ if (preg_match('/^[a-zA-Z0-9_.-]+$/', $lastfmUser) !== 1) {
     returnJson($response);
     exit(0);
 }
+
 // check if username exist
 if (checkUserExist($lastfmUser, $apiKey) !== true) {
     $response = [
         'error' => checkUserExist($lastfmUser, $apiKey),
     ];
     returnJson($response);
-    // echo $response;
     exit(0);
 }
 
@@ -91,13 +92,20 @@ if (file_exists($fileName)) {
         returnImage($patchwork);
     }
 } else {
-
     // Else Generate a new patchwork 
     $albumsCovers = createAlbumsCoverArray($topAlbums);
     $covers = createImagesFromUrls($albumsCovers);
     $patchwork = createPatchwork($imagesSideSize, $patchworkHeight, $patchworkWidth, $noborder, $cols, $rows, $covers);
     // console_log(gettype($patchwork));
-
+    
+    if ($patchwork === false) {
+        $response = [
+            'error' => "An error occurred while generating patchwork.",
+        ];
+        returnJson($response);
+        exit(0);
+    }
+    
     // save the image into a file
     imagejpeg($patchwork, $fileName);
 
@@ -109,10 +117,8 @@ if (file_exists($fileName)) {
 
     // return json if requested else return image
     if ($json) {
-        // return json data
         returnJson($response);
     } else {
-        // display the image
         returnImage($patchwork);
     }
 }
