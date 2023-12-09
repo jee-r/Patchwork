@@ -52,12 +52,12 @@
                         </label>
                     </div>
                     <div>
-                        <label for="3months">
-                            <input type="radio" id="3months" name="period" value="3months">
+                        <label for="3month">
+                            <input type="radio" id="3month" name="period" value="3month">
                             3 Months
                         </label>
-                        <label for="6months">
-                            <input type="radio" id="6months" name="period" value="6months">
+                        <label for="6month">
+                            <input type="radio" id="6month" name="period" value="6month">
                             6 Months
                         </label>
                         <label for="1year">
