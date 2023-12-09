@@ -1,5 +1,5 @@
 
-images/*.jpg
+public/images/*.jpg
 
 # Ignore composer files
 /vendor/
