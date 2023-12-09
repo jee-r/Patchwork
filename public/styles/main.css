@@ -79,6 +79,8 @@ form fieldset {
 .img-link {
     /* margin-top: 2em; */
     display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
     width: 100%;
     margin-bottom: var(--spacing);;
     margin-top: var(--spacing);;
@@ -86,7 +88,8 @@ form fieldset {
 
 .img-link > a {
     padding: var(--spacing);
-    width: 100%;
+    /* width: 100%; */
+    flex: 1 1 auto;
     border-radius: 5px;
     border: 1px;
     border-style: solid;
@@ -96,6 +99,15 @@ form fieldset {
     white-space: nowrap;
     overflow-x: auto;
 
+}
+
+.img-link > div {
+    margin-right: var(--spacing);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 auto;
+    width: auto;
 }
 
 .patchwork {

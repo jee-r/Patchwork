@@ -108,21 +108,23 @@
                 <h2 id="patchworkTitle"></h2>
                 <div class="patchwork">
                     <img src="" id="patchworkImg" width="" height="" alt="Patchwork">
-                    <a id="downloadbtn" role="button" class="primary" href="" download>Download</a>
+                    <div>
+                        <a id="downloadbtn" role="button" class="primary" href="" download>Download</a>
+                    </div>
                 </div>
-                <div class="">
+                <div>
                     <div class="field-title">Dynamyc Image link :</div>
                     <div class="img-link">
+                        <div role="button" class="primary" onclick="copyToClipboard(event, 'patchworkDynLink')">Copy</div>
                         <a id="patchworkDynLink" href="" target="_blank"></a>
                     </div>
-                    <div role="button" class="outline contrast" onclick="copyToClipboard(event, 'patchworkDynLink')">Copy</div>
                 </div>
                 <div>
                     <div class="field-title">Static Image link :</div>
                     <div class="img-link">
+                        <div role="button" class="primary" onclick="copyToClipboard(event, 'patchworkStaticLink')">Copy</div>
                         <a id="patchworkStaticLink" href="" target="_blank"></a>
                     </div>
-                    <div role="button" class="outline contrast" onclick="copyToClipboard(event, 'patchworkStaticLink')">Copy</div>
                 </div>
             </div>
         </article>

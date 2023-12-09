@@ -1,7 +1,6 @@
 function submitForm(event) {
     event.preventDefault(); // Prevent the form from submitting in the traditional way
     const resultContainer = document.getElementById('resultcontainer')
-    const usernameField = document.getElementById('username')
     const submitbtn = document.getElementById('submitbtn')
     const messagebox = document.getElementById('messagebox')
     const downloadbtn = document.getElementById('downloadbtn')
@@ -73,23 +72,16 @@ function copyToClipboard(event, elementId) {
     const elementToCopy = document.getElementById(elementId);
 
     // Select the text field
-    const copyText = elementToCopy.innerHTML;
+    const copyText = elementToCopy.firstChild.nodeValue;
     console.log('copyText', copyText)
     // copyText.setSelectionRange(0, 99999); // For mobile devices
     
     // Copy the text inside the text field
     navigator.clipboard.writeText(copyText);
     
-    // Alert the copied text
-    // alert("Copied the text: " + copyText);
-    
-    clickedElement.innerHTML = "Copied !!"
-    clickedElement.classList.add('secondary');
-    clickedElement.classList.remove('contrast');
+    clickedElement.classList.add('outline');
     setTimeout(() => {
-        clickedElement.innerHTML = "Copy"
-        clickedElement.classList.add('contrast');
-        clickedElement.classList.remove('secondary');
-    }, 3000);
+        clickedElement.classList.remove('outline');
+    }, 1000);
 
 }
