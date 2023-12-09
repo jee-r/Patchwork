@@ -11,3 +11,6 @@ public/images/*.jpg
 # Ignore log files
 /log/
 *.log
+
+# vscode stuff
+.vscode/
