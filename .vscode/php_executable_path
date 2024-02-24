@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/usr/bin/docker compose --file docker-compose.yml run --user 1000:1000 --entrypoint='php' php
